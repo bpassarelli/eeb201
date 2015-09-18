@@ -79,6 +79,48 @@ which(dd$size > 0.8) # this will tell you which rows have the large species
 large.spp <- dd[which(dd$size > 0.8),] # this makes the new data frame
 head(large.spp) # check the data, it worked!
 
+# checking for NAs
+head(dd) # we can see that there is an NA in row 2, column 2
+
+# removing NAs
+# one way to get only complete cases
+cleaned_1 <- dd[complete.cases(dd),]
+head(cleaned_1) # you can see the row 2 was removed
+
+# another method
+cleaned_2 <- na.omit(dd)
+head(cleaned_2) # same effect as above
+
+dd <- cleaned_1 # reassigned dd to only have complete cases
+
+# renaming data frame entries and matching data objects
+# using setdiff
+setdiff(dd$species, tt$tip.label) # shows which species in dataset don't match the ones in the tree
+# this returned 17 species that didn't match
+# sometimes this happens because of mispellings
+# here is one way to fix this
+dd$species[which(dd$species == "Chaetodon_plebius")]<-"Chaetodon_plebeius"
+# if we rerun setdiff only 16 species won't match this time
+
+# matching rest of data to tree
+del_from_data <- setdiff(dd$species, tt$tip.label)
+match(del_from_data, rownames(dd)) # this will show the row numbers in dd that don't match in tt
+# * this returned the values (all NA), instead of row numbers in slide
+
+# create new variable dd.prunned
+dd.prunned <- dd[-match(del_from_data, rownames(dd)),] # now let's check again for overlap
+setdiff(dd.prunned$species, tt$tip.label) # this should return 0 (or NA) mismatches
+
+# matching tree to data
+# use setdiff again but switch the arguments
+not.in.dd <- setdiff(tt$tip.label, dd.prunned$species)
+length(not.in.dd) # will return a large number *this was different than example in slide
+head(not.in.dd) # at least head matches
+
+# now need to use drop.tip()
+?drop.tip
+
+
 # always assign short, very descriptive names to variables
 # \n tells R that there is a new line
 
