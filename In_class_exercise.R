@@ -50,10 +50,14 @@ head(dd$species) # check the species column first six values
 tail(dd$species) # check the species column last six values
 head(dd$size) # check the size column first six values
 
-# look at specific parts of the data frame
+# use [] after a data frame to access specific cells, rows, and columns
 dd[1,] # look at row 1, all columns
 dd[,1] # look at all rows, column 1
 dd[1:10,] # look at rows 1-10, all columns
+dd[5:10,] # rows5-10, all columns
+dd[1:10,2] # rows 1-10, column 2
+dd[,1] # all rows, column 1
+dd[,2] # all rows, column 2
 
 # the which() function does queries with your data
 # this one is telling you to look at the mode column and find values equal to MPF
@@ -65,12 +69,15 @@ dd$mode == "MPF"
 dd[which(dd$mode == 'MPF'),] 
 # the above is more complete, it shows all the data for rows with MPF
 
-dd[1:10,2] # rows 1-10, column 2
-dd[,1] # all rows, column 1
-dd[,2] # all rows, column 2
-
+# next, we assign the above to a variable called just_mpf
 just_mpf <- dd[which(dd$mode == 'MPF'),]
-head(just_mpf)
+head(just_mpf) # check the data
+
+# R challenge
+# make a new data frame with large species only (let's define "large" as > 0.8 )
+which(dd$size > 0.8) # this will tell you which rows have the large species
+large.spp <- dd[which(dd$size > 0.8),] # this makes the new data frame
+head(large.spp) # check the data, it worked!
 
 # always assign short, very descriptive names to variables
 # \n tells R that there is a new line
