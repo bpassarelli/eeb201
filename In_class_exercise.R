@@ -120,22 +120,29 @@ head(not.in.dd) # at least head matches
 # now need to use drop.tip()
 ?drop.tip
 
-
 # always assign short, very descriptive names to variables
 # \n tells R that there is a new line
 
 # Common control statements
-# "For" commands
+# "for" commands
 # whatever is inside the braces will be performed for each of the elements
 # in the parantheses
+
+# below is an example from slide show
+for(ii in 1:5){
+  cat("\nthe number is", ii)
+}
+
+# you can also loop over all items in a vector
 notfish <- c("bat", "dolphin", "toad", "soldier")
 for(animal in notfish){
   cat(animal, "fish\n", sep="")
 }
 # cat puts together whatever element is in our loop plus the word fish
 
-for(animal in notfish)
-  {cat(animal, "fish", " are tasty\n", sep="")}
+for(animal in notfish){
+  cat(animal, "fish", " are tasty\n", sep="")
+}
 
 # while statements - same general structures as "for" statements
 # as long as the condition is true it keeps doing something
@@ -155,13 +162,25 @@ while(xx < 5){
   }
 print(xx)
 
-# "If" statements
+# "if" statements
+# allow your code to diverge depending on conditions
+# if(condition is true){do something}
+for(ii in 1:6){
+  if(ii %% 2){
+    cat(ii, "is odd\n")
+  }
+  else{
+    cat(ii, "is even\n")
+  }
+}
+
+# a few more examples
 xx <- 1
 while(xx < 10){
   cat("value of xx", xx, "\n")
   xx <- xx+1;
-  if( xx == 7){
-    cat("lucky number" , xx, "\n")}
+  if(xx == 7){
+    cat("lucky number", xx, "\n")}
   else
   {cat("not excited about the number", xx, "\n")
   }
