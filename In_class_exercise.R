@@ -199,6 +199,56 @@ while(xx < 10){
 }
 print(xx)
   
-  
-   
+# Pseudocode
+# plan out structure and flow of your program
+# syntax is not important, think about VARIABLES AND CONTROL STRUCTURE
+# can be translated across languages
 
+# pseudocode example from slide
+# script that prints a number and its square over a given range of integers and then
+# sum all squares
+
+# 1. set upper and lower range values
+# 2. setsquaresum to 0
+# 3. loop over the range and for each value print currentvalue and currentvalueˆ2 and
+# add currentvalueˆ2 to squaresum
+# print "here is the sum of it all"m squaresum
+
+lower <- 1
+upper <- 5
+squaresum <- 0   
+
+for(ii in lower:upper){
+  cat(ii, ii^2, "\n")
+  squaresum <- squaresum + ii^2
+}
+cat("the sum of it all is", squaresum)
+
+# Functions
+# self-contained bit of code that performs a task
+# example from Alfaro's slide show
+doubler <- function(num){
+  doubled <- 2 * num
+  cat("witness the awesome power of the doubler\n")
+  cat("I changed", num, "to", doubled, "\n")
+  cat("you're welcome!\n")
+  return(doubled)
+}
+doubler(3)
+doubler(8)
+
+# another example
+greeter <- function(name){
+  cat("Hello,", name, "\n")
+}
+greeter("Bob")
+greeter() # if you forget the name, you get an error message
+# if you type the name of the function without parenthesis you get a description of the function
+
+# let's try another function
+reminder <- function(name){
+  cat("Keep coding,", name, "\n")
+  cat("Don't stop until you are done,", name, "\n")
+  cat("It's worth the trouble,", name, "!\n")
+}
+reminder("Bruno")
