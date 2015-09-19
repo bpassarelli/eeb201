@@ -43,4 +43,12 @@ for(ii in 1:length(years)){
   }
 }
   
-  
+# Exercise 5
+bankAccounts <- c(10, 9.2, 5.6, 3.7, 8.8, 0.5)
+interestRate <- 0.0125
+compounded <- interestRate*bankAccounts + bankAccounts # must initialize variable first
+for(i in 1:length(bankAccounts)){
+  compounded[i] <- interestRate*bankAccounts[i] + bankAccounts[i]; 
+}
+# a simpler method using the rep function
+rep(bankAccounts + bankAccounts*interestRate)
