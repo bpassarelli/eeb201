@@ -1,6 +1,7 @@
 # Bruno Passarelli 
 # 16 September 2015
 # this script is for Alfaro's in class exercises
+# it follows the "R basics and flow control" slideshow by Alfaro
 
 # when using help, you can copy examples to the script and send it to console to see 
 # how a certain function works
@@ -126,7 +127,7 @@ head(not.in.dd) # at least head matches
 # Common control statements
 # "for" commands
 # whatever is inside the braces will be performed for each of the elements
-# in the parantheses
+# in the parentheses
 
 # below is an example from slide show
 for(ii in 1:5){
