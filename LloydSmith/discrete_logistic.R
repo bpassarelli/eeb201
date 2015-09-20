@@ -34,3 +34,11 @@ discreteLogisticFun <- function(N0, rr, KK) {
 }
 
 discreteLogisticFun (N0=10, rr=0.5, KK=100)
+
+# 3.3.2 Mini-exercise
+# do a systematic exploration of the dynamics of the discrete logistic model
+rrs <- c(-0.3, 0.3, 1.3, 1.9, 2.2, 2.7) 
+par(mfrow = c(2,3))
+for(rr in rrs) {
+  discreteLogisticFun (N0=10, rr=rr, KK=100)
+}
