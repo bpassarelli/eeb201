@@ -1,6 +1,6 @@
 # Bruno Passarelli
 # 19 September 2015
-# this script simulates and plots the discrete logistical model 
+# this script simulates and plots the discrete logistic model 
 # it follows the 'Introduction to Dynamic Models in R' handout by Lloyd-Smith
 # it repeats parts of in-class exercises from 16 Sep 15
 
