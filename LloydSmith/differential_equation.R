@@ -38,7 +38,7 @@ par(mfrow = c(1,1))
 
 plot(expGrowthOutput[,1], expGrowthOutput[,2], col = "blue", type = "l")
 
-# 4.2 Mini-exercise
+# 4.1.1 Mini-exercise
 # make a script that brings together the commands to make and run this model
 # setup statements
 library(deSolve)
@@ -60,4 +60,15 @@ expGrowthOutput <- lsoda(init, tseq, expGrowthODE, pars)
 # display the results
 plot(expGrowthOutput[,1], expGrowthOutput[,2], col = "blue", type = "l")
 
+# 4.2.1 Mini-exercise
+logGrowthODE <- function(tt, yy, pars){
+  derivs <- pars["rr"] * yy*(1-yy/pars["KK"])
+  return(list(derivs))
+}
 
+init <- 1
+tseq <- seq(0, 20, by = 0.01)
+pars <- c(rr = 0.1, KK = 100)
+logGrowthOutput <- lsoda(init, tseq, logGrowthODE, pars)
+head(logGrowthOutput)
+plot(logGrowthOutput[,1], logGrowthOutput[,2], col = "blue", type = "l")
