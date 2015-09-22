@@ -71,26 +71,52 @@ dev.off()
 quartz
      2
 
-pdf(file="normal_barplot.pdf", width=6, height=6)
+# more on "quantile"
+# quantile take a vector of stuff, and returns the value q such that p%
+# of your distribution is less than q
 
-# determine the breaks
-bins<-seq(-10,10,by=1)
-hist(s1,breaks=bins)$breaks
-hist(s3,breaks=bins)$breaks
+# for example, find the 75th percentile of the standard normal distribution:
+quantile(s1,0.75)
+
+# quantile with just a vector gives some interesting stuff
+quantile(s1)
+
+# Boxplot
+# boxplot:
+pdf(file="Normal_boxplot.pdf", width=6,height=6); # open the file
+
+par(mfrow=c(1,1),mar=c(4, 4, 3, 2)) # sets plotting area and margins
+
+boxplot(cbind(s1,s3),names=c("Sigma=1","Sigma=3"), main="Draws from a normal distribution",col=c(2,4))
 
 dev.off()
+quartz
+     2
 
-# we can get the counts for each bin
-counts_s1<-hist(s1,breaks=bins)$counts
-counts_s3<-hist(s3,breaks=bins)$counts
+# Histogram with both sets of data on same axes
+# let's make a histogram of these values, but putting both on the same axes
+# But, we need to have the same bin widths for both data sets
 
-# set plot are and margins
-par(mfrow=c(1,1), mar=c(4, 4, 3, 2))
+bins <- seq(-11, 11, by=1)
+hist(s1, breaks = bins)$breaks
+
+bins <- seq(-11, 11, by=1) # there is a value of s3 < -10 so had to increase range
+hist(s3, breaks = bins)$breaks
+
+counts_s1 <- hist(s1, breaks = bins)$counts
+counts_s3 <- hist(s3, breaks = bins)$counts
+
+# now for the plot
+pdf(file="Normal_barplot.pdf",width=6,height=6) # open the file
+
+par(mfrow=c(1,1), mar=c(3, 3, 3, 4)) # sets plotting area and margins
 
 # now create the plot using barplot
-barplot(rbind(counts_s1,counts_s3),col=c(2,4),beside=T, 
-names.arg=seq(-10,9.5,by=1),xlab="Value",ylab="Count")
+barplot(rbind(counts_s1,counts_s3),col=c(2,4),beside=T,names.arg=seq(-11,10.5,by=1),xlab="Value",ylab="Count")
+
+legend(6,340,c(expression(paste(sigma,"=3")),expression(paste(sigma,"=6"))),col=c(2,4),lwd=4)
 
 dev.off()
-
+pdf
+  2
 
