@@ -12,7 +12,6 @@
 
 # Set working directory:
 #change this to whatever you want
-setwd("~/Dropbox/Kirk_stuff/KEL_bootcamp/2014")
 setwd("/Users/bpassarelli/Documents/Bruno/UCLA/Fall 2015/EEB201/eeb201/Bootcamp Datasets/Data_Lohmueller")
 
 # Load a data set
