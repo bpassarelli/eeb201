@@ -120,3 +120,8 @@ dev.off()
 pdf
   2
 
+# Finding extreme values
+# we can find the % values in s1 that are >3:
+mean(s1>3) # only one of the 1000 values in s1 is >3
+mean(s3>3) # 15.2% of the values in s3 are >3
+
